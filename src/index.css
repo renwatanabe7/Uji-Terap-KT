@@ -1,0 +1,142 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom Report Styles */
+.report-container {
+  @apply font-sans leading-relaxed text-zinc-800;
+}
+
+.report-container h1 {
+  @apply text-3xl font-extrabold text-zinc-900 mb-6 border-b pb-4 border-zinc-200;
+}
+
+.report-container h2 {
+  @apply text-xl font-bold text-zinc-800 mt-10 mb-4 flex items-center gap-2;
+}
+
+.report-container h2::before {
+  content: "";
+  @apply w-1.5 h-6 bg-emerald-500 rounded-full inline-block;
+}
+
+.report-container h3 {
+  @apply text-lg font-bold text-zinc-800 mt-6 mb-3;
+}
+
+.report-container p {
+  @apply mb-4 text-zinc-700 leading-7;
+}
+
+.report-container table {
+  @apply w-full border-collapse m-0 bg-white;
+}
+
+.report-container thead {
+  @apply bg-zinc-50 border-b border-zinc-200;
+}
+
+.report-container th {
+  @apply p-4 text-left text-xs font-bold uppercase tracking-wider text-zinc-600 border-r border-zinc-200 last:border-r-0;
+}
+
+.report-container td {
+  @apply p-4 text-sm text-zinc-700 align-top border-b border-r border-zinc-200 last:border-r-0;
+}
+
+.report-container tr:last-child td {
+  @apply border-b-0;
+}
+
+.report-container tr:nth-child(even) {
+  @apply bg-zinc-50/50;
+}
+
+.report-container tr:hover {
+  @apply bg-emerald-50/30 transition-colors;
+}
+
+.report-container ul, .report-container ol {
+  @apply mb-6 ml-6 space-y-2;
+}
+
+.report-container ul {
+  @apply list-disc;
+}
+
+.report-container ol {
+  @apply list-decimal;
+}
+
+.report-container strong {
+  @apply font-bold text-zinc-900;
+}
+
+.report-container blockquote {
+  @apply border-l-4 border-emerald-200 pl-4 italic text-zinc-600 my-6;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  body, html {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    width: 100% !important;
+  }
+
+  main {
+    display: block !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+
+  .lg\:col-span-8 {
+    width: 100% !important;
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .report-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+  }
+
+  /* Remove all shadows and borders for print */
+  .shadow-sm, .shadow-md, .shadow-lg, .shadow-xl, .shadow-2xl {
+    box-shadow: none !important;
+  }
+
+  .border, .border-zinc-200, .border-zinc-100 {
+    border: none !important;
+  }
+
+  /* Ensure tables look good in print */
+  table {
+    page-break-inside: auto;
+    border: 1px solid #000 !important;
+  }
+  
+  tr {
+    page-break-inside: avoid;
+    page-break-after: auto;
+  }
+
+  th, td {
+    border: 1px solid #000 !important;
+  }
+
+  @page {
+    margin: 2cm;
+  }
+}
